@@ -18,10 +18,76 @@
 <script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
-<link href="libs/bootstrap/css/bootstrap.css" rel="stylesheet">
-<link href="libs/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-<link href="libs/bootstrap/css/highlight.css" rel="stylesheet">
-<link href="libs/bootstrap/css/staticdocs.css" rel="stylesheet">
+<style type="text/css">
+.navbar-inverse {
+  background-color: #FFF;
+  border-color: transparent;
+}
+.navbar-inverse .navbar-brand {
+  color: #36A100;
+}
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+  color: #236900;
+  background-color: transparent;
+}
+.navbar-inverse .navbar-text {
+  color: #36A100;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #36A100;
+}
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  color: #236900;
+  background-color: #f1f1f1;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: #36A100;
+  background-color: #080808;
+}
+.navbar-inverse .navbar-nav > .disabled > a,
+.navbar-inverse .navbar-nav > .disabled > a:hover,
+.navbar-inverse .navbar-nav > .disabled > a:focus {
+  color: #444;
+  background-color: transparent;
+}
+.navbar-inverse .navbar-toggle {
+  border-color: #333;
+}
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: #333;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+  border-color: #101010;
+}
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  color: #fff;
+  background-color: #080808;
+}
+
+a {
+  color: #36A100;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #23527c;
+  text-decoration: none;
+}
+
+body { padding-top: 50px; }
+
+</style>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -77,8 +143,8 @@ img {
       <ul class="nav navbar-nav">
 
         <li><a href="index.html"><i class="icon-home icon-white"></i><span class="glyphicon glyphicon-home">  </span>  Home</a></li>
-        <li><a href="docs.ecosimr.org"><i class="fa fa-book"></i>  Docs</a></li>
-         <li><a href="docs.ecosimr.org"><i class="fa fa-github-alt"></i> Source</a></li>
+        <li><a href="http://docs.ecosimr.org"><i class="fa fa-book"></i>  Docs</a></li>
+         <li><a href="http://github.com/GotelliLab/EcoSimR"><i class="fa fa-github-alt"></i> Source</a></li>
          
       </ul>
     </div>
@@ -186,25 +252,25 @@ install_github(&quot;gotellilab/EcoSimR&quot;)</code></pre>
 <pre class="r"><code>finchMod &lt;- cooc_null_model(dataWiFinches, algo=&quot;sim9&quot;,nReps=10000,burn_in = 500)</code></pre>
 <pre class="r"><code>## Summary and plot info
 summary(finchMod)</code></pre>
-<pre><code>## Time Stamp:  Mon Mar 23 22:10:59 2015 
+<pre><code>## Time Stamp:  Mon Mar 23 22:30:11 2015 
 ## Reproducible:  
 ## Number of Replications:  
-## Elapsed Time:  1.8 secs 
+## Elapsed Time:  1.7 secs 
 ## Metric:  c_score 
 ## Algorithm:  sim9 
 ## Observed Index:  3.7941 
-## Mean Of Simulated Index:  2.7487 
-## Variance Of Simulated Index:  0.028048 
-## Lower 95% (1-tail):  2.5147 
-## Upper 95% (1-tail):  3.0735 
-## Lower 95% (2-tail):  2.4779 
-## Upper 95% (2-tail):  3.1324 
+## Mean Of Simulated Index:  2.756 
+## Variance Of Simulated Index:  0.027207 
+## Lower 95% (1-tail):  2.5294 
+## Upper 95% (1-tail):  3.0662 
+## Lower 95% (2-tail):  2.4926 
+## Upper 95% (2-tail):  3.1471 
 ## Lower-tail P &gt;  0.9999 
 ## Upper-tail P &lt;  1e-04 
 ## Observed metric &gt; 10000 simulated metrics 
 ## Observed metric &lt; 0 simulated metrics 
 ## Observed metric = 0 simulated metrics 
-## Standardized Effect Size (SES):  6.2422</code></pre>
+## Standardized Effect Size (SES):  6.2937</code></pre>
 <pre class="r"><code>plot(finchMod,type=&quot;hist&quot;)</code></pre>
 <p><img src="index_files/figure-html/coocnull-1.png" title="" alt="" width="480" style="display: block; margin: auto;" /></p>
 <p>See a plot of the actual matrix compared to a single simulated matrix</p>
