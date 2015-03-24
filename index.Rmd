@@ -1,0 +1,66 @@
+---
+title: "EcoSimR"
+output:
+  html_document
+---
+
+**A software package to fit ecological null models**
+
+
+### Overview
+
+EcoSimR is an open source R version of the [EcoSim software project](), details about the package can be found in the [full documentation](http://docs.ecosimr.org)
+
+### Quickstart
+
+```{r quick install,eval=FALSE}
+## Install development version
+install.packages("devtools")
+library(devtools)
+install_github("gotellilab/EcoSimR")
+
+```
+
+*Co-Occurrence null model*
+
+```{r, echo=FALSE,message=FALSE,warning=FALSE}
+library(EcoSimR)
+```
+Data for co-occurrence null models should be a species by site matrix of incidence data.
+
+```{r,results='asis',echo=FALSE}
+knitr::kable(dataWiFinches[1:5,1:10],caption="West Indian Finch Data")
+```
+
+`EcoSimR` provides an easy way to plot and summarize output.  We'll use the *SIM9* algorithm (See table 2 Gotelli 2000) and the C-Score metric (Stone and Roberts 1990).
+
+```{r,echo=FALSE,message=FALSE,warning=FALSE}
+finchMod <- suppressMessages(cooc_null_model(dataWiFinches, algo="sim9",nReps=10000,burn_in = 500,suppressProg=T))
+```
+
+
+```{r eval=FALSE}
+finchMod <- cooc_null_model(dataWiFinches, algo="sim9",nReps=10000,burn_in = 500)
+```
+```{r coocnull,fig.align='center',fig.height=5,fig.width=5}
+
+
+## Summary and plot info
+summary(finchMod)
+
+plot(finchMod,type="hist")
+
+```
+
+
+See a plot of the actual matrix compared to a single simulated matrix
+```{r,fig.align='center',fig.height=4,fig.width=6}
+
+plot(finchMod,type="cooc")
+
+```
+
+### References
+Gotelli, N.J. 2000. Null model analysis of species co-occurrence patterns. **Ecology** 81: 2606-2621  <a href = "https://www.uvm.edu/~ngotelli/manuscriptpdfs/Ecology81p2606.pdf",target = _new><i class="fa fa-file-pdf-o"></i></a>
+
+Stone, Lewis and Roberts, Alan 1990. The checkerboard score and species distributions. **Oecologia** 85 (1): 74–79. <a href = "http://life.tau.ac.il/departments/zoology/members/stone/documents/checkerboardscoreandspecies.pdf", targe=_new><i class="fa fa-file-pdf-o"></i></a>
